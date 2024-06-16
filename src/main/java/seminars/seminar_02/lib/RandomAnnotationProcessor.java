@@ -1,7 +1,5 @@
 package seminars.seminar_02.lib;
 
-import seminars.seminar_02.AnnotationsMain;
-
 import java.lang.reflect.Field;
 
 public class RandomAnnotationProcessor {

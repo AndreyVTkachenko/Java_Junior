@@ -2,7 +2,6 @@ package seminars.seminar_02;
 
 import seminars.seminar_02.lib.ObjectCreator;
 import seminars.seminar_02.lib.Random;
-import seminars.seminar_02.lib.RandomAnnotationProcessor;
 
 public class AnnotationsMain {
 
