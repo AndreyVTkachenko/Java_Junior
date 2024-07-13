@@ -1,32 +1,26 @@
 package homeworks.homework_02;
 
 import java.lang.reflect.Field;
+import java.util.Date;
 
 public class RandomDateAnnotationProcessor {
 
-    public static void processAnnotation(Object obj) {
+    public static void processAnnotations(Object obj) {
         java.util.Random random = new java.util.Random();
         Class<?> objClass = obj.getClass();
 
-        Long startDate = null;
-
         for (Field field : objClass.getDeclaredFields()) {
-            if (field.isAnnotationPresent(RandomDate.class) && field.getType().isAssignableFrom(long.class)) {
+            if (field.isAnnotationPresent(RandomDate.class) && field.getType().isAssignableFrom(Date.class)) {
                 RandomDate annotation = field.getAnnotation(RandomDate.class);
-                long min = annotation.min();
                 long max = annotation.max();
-
-                if (field.getName().equals("expirationDate") && startDate != null) {
-                    min = startDate + 1L;
+                long min = annotation.min();
+                if (min >= max) {
+                    throw new IllegalArgumentException("min должно быть меньше, чем max");
                 }
-
-                long randomValue = min + (long) (random.nextDouble() * (max - min));
+                long randomTime = min + (long) (random.nextDouble() * (max - min));
                 try {
                     field.setAccessible(true);
-                    field.set(obj, randomValue);
-                    if (field.getName().equals("startDate")) {
-                        startDate = randomValue;
-                    }
+                    field.set(obj, new Date(randomTime));
                 } catch (IllegalAccessException e) {
                     System.err.println("Не удалось вставить значение в поле: " + e.getMessage());
                 }

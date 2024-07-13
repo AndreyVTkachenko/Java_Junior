@@ -9,7 +9,7 @@ public class ObjectCreator {
             Constructor<T> constructor = tClass.getDeclaredConstructor();
             constructor.setAccessible(true);
             T obj = constructor.newInstance();
-            RandomDateAnnotationProcessor.processAnnotation(obj);
+            RandomDateAnnotationProcessor.processAnnotations(obj);
             return obj;
         } catch (Exception e) {
             System.err.println("Ничего не получилось: " + e.getMessage());
@@ -17,3 +17,4 @@ public class ObjectCreator {
         }
     }
 }
+
