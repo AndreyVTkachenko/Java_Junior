@@ -24,6 +24,4 @@ public class DataBaseOne {
             throw new RuntimeException(e);
         }
     }
-
-
 }

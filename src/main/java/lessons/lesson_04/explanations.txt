@@ -1,0 +1,1 @@
+Для работы кода из лекции переместить файл конфигурации hibernate.cfg.xml в пакет src/main/resources

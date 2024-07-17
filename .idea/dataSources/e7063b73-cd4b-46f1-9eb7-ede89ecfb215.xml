@@ -1050,7 +1050,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="293" parent="1" name="test">
-      <LastIntrospectionLocalTimestamp>2024-07-15.16:19:40</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-07-17.06:59:26</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="294" parent="1" name="world">
@@ -5311,7 +5311,7 @@ mysql&gt; SELECT VERSION(), sys.version_patch();
       <Definer>mysql.sys@localhost</Definer>
       <SourceTextLength>839</SourceTextLength>
     </view>
-    <table id="709" parent="293" name="magic">
+    <table id="709" parent="293" name="author">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
@@ -25577,237 +25577,214 @@ customer_id</ColNames>
       <Position>5</Position>
     </column>
     <column id="4911" parent="709" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="4912" parent="709" name="name">
+      <DasType>varchar(256)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="4913" parent="710" name="id">
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="4912" parent="709" name="название">
+    <column id="4914" parent="710" name="firstname">
       <DasType>varchar(45)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="4913" parent="709" name="повреждение">
-      <DasType>int|0s</DasType>
+    <column id="4915" parent="710" name="lastname">
+      <DasType>varchar(45)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="4914" parent="709" name="атака">
-      <DasType>int|0s</DasType>
-      <Position>4</Position>
-    </column>
-    <column id="4915" parent="709" name="броня">
-      <DasType>int|0s</DasType>
-      <Position>5</Position>
-    </column>
-    <index id="4916" parent="709" name="PRIMARY">
+    <index id="4916" parent="710" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="4917" parent="709" name="PRIMARY">
+    <key id="4917" parent="710" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="4918" parent="710" name="id">
-      <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="4919" parent="710" name="firstname">
-      <DasType>varchar(45)|0s</DasType>
-      <Position>2</Position>
-    </column>
-    <column id="4920" parent="710" name="lastname">
-      <DasType>varchar(45)|0s</DasType>
-      <Position>3</Position>
-    </column>
-    <index id="4921" parent="710" name="PRIMARY">
-      <ColNames>id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="4922" parent="710" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="4923" parent="711" name="ID">
+    <column id="4918" parent="711" name="ID">
       <AutoIncrement>4080</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="4924" parent="711" name="Name">
+    <column id="4919" parent="711" name="Name">
       <DasType>char(35)|0s</DasType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="4925" parent="711" name="CountryCode">
+    <column id="4920" parent="711" name="CountryCode">
       <DasType>char(3)|0s</DasType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="4926" parent="711" name="District">
+    <column id="4921" parent="711" name="District">
       <DasType>char(20)|0s</DasType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="4927" parent="711" name="Population">
+    <column id="4922" parent="711" name="Population">
       <DasType>int|0s</DasType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <foreign-key id="4928" parent="711" name="city_ibfk_1">
+    <foreign-key id="4923" parent="711" name="city_ibfk_1">
       <ColNames>CountryCode</ColNames>
       <RefColNames>Code</RefColNames>
       <RefTableName>country</RefTableName>
     </foreign-key>
-    <index id="4929" parent="711" name="PRIMARY">
+    <index id="4924" parent="711" name="PRIMARY">
       <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="4930" parent="711" name="CountryCode">
+    <index id="4925" parent="711" name="CountryCode">
       <ColNames>CountryCode</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="4931" parent="711" name="PRIMARY">
+    <key id="4926" parent="711" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="4932" parent="712" name="Code">
+    <column id="4927" parent="712" name="Code">
       <DasType>char(3)|0s</DasType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="4933" parent="712" name="Name">
+    <column id="4928" parent="712" name="Name">
       <DasType>char(52)|0s</DasType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="4934" parent="712" name="Continent">
+    <column id="4929" parent="712" name="Continent">
       <DasType>enum(&apos;Asia&apos;, &apos;Europe&apos;, &apos;North America&apos;, &apos;Africa&apos;, &apos;Oceania&apos;, &apos;Antarctica&apos;, &apos;South America&apos;)|0e</DasType>
       <DefaultExpression>&apos;Asia&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="4935" parent="712" name="Region">
+    <column id="4930" parent="712" name="Region">
       <DasType>char(26)|0s</DasType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="4936" parent="712" name="SurfaceArea">
+    <column id="4931" parent="712" name="SurfaceArea">
       <DasType>decimal(10,2 digit)|0s</DasType>
       <DefaultExpression>0.00</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="4937" parent="712" name="IndepYear">
+    <column id="4932" parent="712" name="IndepYear">
       <DasType>smallint|0s</DasType>
       <Position>6</Position>
     </column>
-    <column id="4938" parent="712" name="Population">
+    <column id="4933" parent="712" name="Population">
       <DasType>int|0s</DasType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="4939" parent="712" name="LifeExpectancy">
+    <column id="4934" parent="712" name="LifeExpectancy">
       <DasType>decimal(3,1 digit)|0s</DasType>
       <Position>8</Position>
     </column>
-    <column id="4940" parent="712" name="GNP">
+    <column id="4935" parent="712" name="GNP">
       <DasType>decimal(10,2 digit)|0s</DasType>
       <Position>9</Position>
     </column>
-    <column id="4941" parent="712" name="GNPOld">
+    <column id="4936" parent="712" name="GNPOld">
       <DasType>decimal(10,2 digit)|0s</DasType>
       <Position>10</Position>
     </column>
-    <column id="4942" parent="712" name="LocalName">
+    <column id="4937" parent="712" name="LocalName">
       <DasType>char(45)|0s</DasType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>11</Position>
     </column>
-    <column id="4943" parent="712" name="GovernmentForm">
+    <column id="4938" parent="712" name="GovernmentForm">
       <DasType>char(45)|0s</DasType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>12</Position>
     </column>
-    <column id="4944" parent="712" name="HeadOfState">
+    <column id="4939" parent="712" name="HeadOfState">
       <DasType>char(60)|0s</DasType>
       <Position>13</Position>
     </column>
-    <column id="4945" parent="712" name="Capital">
+    <column id="4940" parent="712" name="Capital">
       <DasType>int|0s</DasType>
       <Position>14</Position>
     </column>
-    <column id="4946" parent="712" name="Code2">
+    <column id="4941" parent="712" name="Code2">
       <DasType>char(2)|0s</DasType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>15</Position>
     </column>
-    <index id="4947" parent="712" name="PRIMARY">
+    <index id="4942" parent="712" name="PRIMARY">
       <ColNames>Code</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="4948" parent="712" name="PRIMARY">
+    <key id="4943" parent="712" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="4949" parent="713" name="CountryCode">
+    <column id="4944" parent="713" name="CountryCode">
       <DasType>char(3)|0s</DasType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="4950" parent="713" name="Language">
+    <column id="4945" parent="713" name="Language">
       <DasType>char(30)|0s</DasType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="4951" parent="713" name="IsOfficial">
+    <column id="4946" parent="713" name="IsOfficial">
       <DasType>enum(&apos;T&apos;, &apos;F&apos;)|0e</DasType>
       <DefaultExpression>&apos;F&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="4952" parent="713" name="Percentage">
+    <column id="4947" parent="713" name="Percentage">
       <DasType>decimal(4,1 digit)|0s</DasType>
       <DefaultExpression>0.0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <foreign-key id="4953" parent="713" name="countryLanguage_ibfk_1">
+    <foreign-key id="4948" parent="713" name="countryLanguage_ibfk_1">
       <ColNames>CountryCode</ColNames>
       <RefColNames>Code</RefColNames>
       <RefTableName>country</RefTableName>
     </foreign-key>
-    <index id="4954" parent="713" name="PRIMARY">
+    <index id="4949" parent="713" name="PRIMARY">
       <ColNames>CountryCode
 Language</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="4955" parent="713" name="CountryCode">
+    <index id="4950" parent="713" name="CountryCode">
       <ColNames>CountryCode</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="4956" parent="713" name="PRIMARY">
+    <key id="4951" parent="713" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

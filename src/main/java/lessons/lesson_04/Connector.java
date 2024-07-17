@@ -18,5 +18,4 @@ public class Connector {
     public Session getSession(){
         return sessionFactory.openSession();
     }
-
 }
