@@ -44,17 +44,26 @@ public class Main {
                 "Невероятно",
                 "Ври больше!",
                 "Куда смотрит модератор?..");
+
+        List<String> postTitles = Arrays.asList(
+                "Автомобили",
+                "Фотографии",
+                "Недвижимость",
+                "Природа",
+                "Политика",
+                "Живопись",
+                "Экономика");
+
         Random random = new Random();
 
-
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 1; i <= 5; i++) {
             Post post = new Post();
-            post.setTitle("Post " + i);
+            post.setTitle(postTitles.get(random.nextInt(postTitles.size())));
             post.setTimestamp(LocalDateTime.now());
             User postUser = getRandomUser(Arrays.asList(user1, user2, user3, user4, user5), random);
             post.setUser(postUser);
 
-            int numComments = random.nextInt(4) + 2;
+            int numComments = random.nextInt(5) + 2;
             for (int j = 0; j < numComments; j++) {
                 PostComment comment = new PostComment();
                 comment.setText(commentsList.get(random.nextInt(commentsList.size())));
@@ -71,7 +80,8 @@ public class Main {
         session.getTransaction().commit();
 
         loadPostComments(session, 1L);
-        loadPostsByUserId(session, 2L);
+        loadPostsByUserId(session, 3L);
+        loadCommentsByUserId(session, 5L);
 
         session.close();
         sessionFactory.close();
@@ -92,10 +102,23 @@ public class Main {
 
     private static void loadPostsByUserId(Session session, Long userId) {
         User user = session.get(User.class, userId);
-        List<Post> posts = session.createQuery("select p from Post p where p.user.id = :userId", Post.class).setParameter("userId", userId).getResultList();
+        List<Post> posts = session.createQuery("select p from Post p where p.user.id = :userId", Post.class)
+                .setParameter("userId", userId)
+                .getResultList();
         System.out.println("=======================================================================================");
         System.out.println("Публикации пользователя " + user.getName() + ":");
         posts.forEach(post -> System.out.println("- " + post.getTitle()));
+        System.out.println("=======================================================================================");
+    }
+
+    private static void loadCommentsByUserId(Session session, Long userId) {
+        User user = session.get(User.class, userId);
+        List<PostComment> comments = session.createQuery("select c from PostComment c where c.user.id = :userId", PostComment.class)
+                .setParameter("userId", userId)
+                .getResultList();
+        System.out.println("=======================================================================================");
+        System.out.println("Комментарии пользователя " + user.getName() + ":");
+        comments.forEach(comment -> System.out.println("- " + comment.getText() + " (для поста \"" + comment.getPost().getTitle() + "\")"));
         System.out.println("=======================================================================================");
     }
 }
