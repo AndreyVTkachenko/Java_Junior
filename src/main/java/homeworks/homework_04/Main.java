@@ -73,7 +73,6 @@ public class Main {
                 comment.setUser(commentUser);
                 post.getComments().add(comment);
             }
-
             session.save(post);
         }
 
