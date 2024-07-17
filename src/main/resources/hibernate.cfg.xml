@@ -4,12 +4,14 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">admin</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
         <!-- none, create, create-drop, update, validate-->
         <property name="hibernate.hbm2ddl.auto">create</property>
 
@@ -20,5 +22,10 @@
         <mapping class="seminars.seminar_04.entity.Author"/>
         <mapping class="seminars.seminar_04.entity.Book"/>
         <mapping class="seminars.seminar_04.entity.AuthorBook"/>
+
+        <!-- для домашнего задания-->
+        <mapping class="homeworks.homework_04.Post"/>
+        <mapping class="homeworks.homework_04.PostComment"/>
+        <mapping class="homeworks.homework_04.User"/>
     </session-factory>
 </hibernate-configuration>
