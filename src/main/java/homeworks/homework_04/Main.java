@@ -90,6 +90,11 @@ public class Main {
         return users.get(random.nextInt(users.size()));
     }
 
+    /**
+     * Загрузить все комментарии публикации
+     * @param session
+     * @param postId
+     */
     private static void loadPostComments(Session session, Long postId) {
         Post post = session.get(Post.class, postId);
         System.out.println("=======================================================================================");
@@ -99,6 +104,11 @@ public class Main {
         System.out.println("=======================================================================================");
     }
 
+    /**
+     * Загрузить все публикации по идентификатору юзера
+     * @param session
+     * @param userId
+     */
     private static void loadPostsByUserId(Session session, Long userId) {
         User user = session.get(User.class, userId);
         List<Post> posts = session.createQuery("select p from Post p where p.user.id = :userId", Post.class)
@@ -110,6 +120,11 @@ public class Main {
         System.out.println("=======================================================================================");
     }
 
+    /**
+     * Загрузить все комментарии по идентификатору юзера
+     * @param session
+     * @param userId
+     */
     private static void loadCommentsByUserId(Session session, Long userId) {
         User user = session.get(User.class, userId);
         List<PostComment> comments = session.createQuery("select c from PostComment c where c.user.id = :userId", PostComment.class)
